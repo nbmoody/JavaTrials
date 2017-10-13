@@ -20,19 +20,22 @@ public class BinarySearch {
 
     public static int binarySearch(int[] array, int left, int right, int search) {
 
-        int middle = ((left + right)/2);
+        int middle = ( (left + right) / 2 );
 
         if(array[middle] == search){
+            System.out.println("Found it!");
             return middle;
         } else if(array[middle] < search){
             // If the element at the middle is less than search, recurse using the top half:
+            System.out.println("Use top half!");
             binarySearch(array, middle, right, search);
         } else if(array[middle] > search){
             // If the element at the middle is greater than search, recurse using the bottom half:
+            System.out.println("Use bottom half!");
             binarySearch(array, left, middle, search);
         }
 
-        return middle;
+        return middle; //TODO: Why is this always returning the value of 4, the original middle value?
     }
 
 
@@ -107,13 +110,13 @@ public class BinarySearch {
         System.out.println("Beginning with unsorted array:");
         for(int element : unsorted_array){ System.out.print(element + ","); }
 
-        System.out.println("Sorting using quicksort()...");
+        System.out.println("\nSorting using quicksort()...");
         quickSort(unsorted_array, left, right);
 
-        System.out.println("Array sorted succesfully:");
+        System.out.println("Array sorted successfully:");
         for(int element : unsorted_array){ System.out.print(element + ","); }
 
-        System.out.println("Searching array for " + search + ".");
+        System.out.println("\nSearching array for " + search + ".");
         System.out.println("Initializing Binary Search...");
         int searchIndex = binarySearch(unsorted_array, left, right, search);
         System.out.println("The element you are searching for is at index " + searchIndex + ".");
