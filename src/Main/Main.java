@@ -5,23 +5,20 @@ package Main;// Author: Nathaniel Ben. Moody
 
 
 // Imports:
-import StreamsAndServers.TryStream;
-import StreamsAndServers.TryServer;
-import java.io.IOException;
+import Threads.TryUnsynchronizedThread;
+import Threads.TrySynchronizedThread;
 
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
+        TrySynchronizedThread job = new TrySynchronizedThread();
+        Thread alpha = new Thread(job);
+        Thread beta = new Thread(job);
+        alpha.setName("alphaSync");
+        beta.setName("betaSync");
 
-        try {
-
-
-        } catch(Exception ex) {
-
-        }
-
-
-
+        alpha.start();
+        beta.start();
     }
 
 
